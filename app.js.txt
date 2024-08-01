@@ -1,9 +1,23 @@
 const express = require("express");
- 
+  
 const app = express();
-app.get("/", function(request, response){
-     
-    response.send("<h1>Привет, Октагон!</h1>");
+app.get("/", function(_, response){
+      
+    response.send("<h1>Главная страница</h1>");
 });
 
+app.get("/static", function(request, response){
+     
+    response.send("<h1>Hello</h1><p>Octagon NodeJS Test</p>");
+});
+
+app.use("/dynamic", function(request, response){
+
+    const int_a = request.query.a;
+    const int_b = request.query.b;
+    const int_c = request.query.c;
+    
+    response.send(`<h1>Calculated</h1><p>${int_a/3+int_b/3+int_c/3}</p>`);
+});
+ 
 app.listen(3000);
