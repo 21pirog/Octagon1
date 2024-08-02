@@ -26,3 +26,20 @@ const bot = new TelegramBot(token, {polling: true});
 	var userId = msg.from.id;
 	bot.sendMessage(userId, 'Куличкина Алина');
 });
+
+	bot.onText(/^\!webscr/, function(msg) {
+  console.log(msg);
+  var userId = msg.from.id;
+  var url = msg.text.substring(8).trim();
+  var image = "https://mini.s-shot.ru/?" + url;
+bot.sendMessage(msg.chat.id, "[📷](" + image + ") Cкриншот сайта: " + url,{parse_mode : "Markdown"});
+});
+
+//qr comando
+	bot.onText(/^\!qr/, function(msg) {
+  console.log(msg);
+  var userId = msg.from.id;
+  var data = msg.text.substring(3).trim();
+  var imageqr = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + data;
+bot.sendMessage(msg.chat.id, "[✏️](" + imageqr + ")Qr-код: " + data,{parse_mode : "Markdown"});
+});
