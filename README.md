@@ -1,1 +1,1 @@
-# Octagon1
+updated bot.txt for qr and screen making tg bot
